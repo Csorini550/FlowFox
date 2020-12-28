@@ -10,11 +10,13 @@ module.exports = {
       },
       projectId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: { model: "project" },
       },
       categoryId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: { model: "category" },
       },
       createdAt: {
         allowNull: false,

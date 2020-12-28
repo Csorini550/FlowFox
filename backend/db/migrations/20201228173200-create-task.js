@@ -14,13 +14,19 @@ module.exports = {
       },
       projectId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: { model: "projects" },
       },
       sectionId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: { model: "sections" },
       },
       priority: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      completed: {
         allowNull: false,
         type: Sequelize.STRING
       },

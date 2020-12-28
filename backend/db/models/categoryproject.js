@@ -2,6 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const categoryProject = sequelize.define('categoryProject', {
     projectId: {
+      allowNull: false,
       type: DataTypes.INTEGER
     },
     categoryId: {

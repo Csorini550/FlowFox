@@ -14,7 +14,8 @@ module.exports = {
       },
       projectId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: { model: "projects" },
       },
       createdAt: {
         allowNull: false,
