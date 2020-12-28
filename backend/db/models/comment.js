@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const comment = sequelize.define('comment', {
+  const Comment = sequelize.define('Comment', {
     userId: {
       allowNull: false,
       type: DataTypes.INTEGER
@@ -14,12 +14,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING
     },
   }, {});
-  comment.associate = function (models) {
+  Comment.associate = function (models) {
     // associations can be defined here
-    comment.belongsTo(models.User, { foreignKey: 'userId' })
-    comment.belongsTo(models.Task, { foreignKey: 'taskId' })
+    Comment.belongsTo(models.User, { foreignKey: 'userId' })
+    Comment.belongsTo(models.Task, { foreignKey: 'taskId' })
 
 
   };
-  return comment;
+  return Comment;
 };

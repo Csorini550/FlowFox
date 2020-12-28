@@ -1,23 +1,17 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const project = sequelize.define('project', {
+  const Project = sequelize.define('Project', {
     name: {
       allowNull: false,
       type: DataTypes.STRING
     },
-    userId: {
-      allowNull: false,
-      type: DataTypes.INTEGER
-
-    },
 
   }, {});
-  project.associate = function (models) {
-    project.belongsTo(models.categoryProject, { foreignKey: 'projectId' })
-    project.hasMany(models.user, { foreignKey: 'userId' })
-    project.belongsTo(models.section, { foreignKey: 'sectionId' })
-    project.hasMany(models.comment, { foreignKey: 'userId' })
+  Project.associate = function (models) {
+    Project.belongsTo(models.CategoryProject, { foreignKey: 'projectId' })
+    Project.belongsToMany(models.User, { foreignKey: 'userId', through: models.ProjectTeam, otherKey: 'projectId' })
+    Project.belongsTo(models.Section, { foreignKey: 'sectionId' })
     // associations can be defined here
   };
-  return project;
+  return Project;
 };

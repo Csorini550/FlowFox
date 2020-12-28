@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('tasks', {
+    return queryInterface.createTable('Tasks', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -15,12 +15,12 @@ module.exports = {
       projectId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: "projects" },
+        references: { model: "Projects" },
       },
       sectionId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: "sections" },
+        references: { model: "Sections" },
       },
       priority: {
         allowNull: false,
@@ -45,6 +45,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('tasks');
+    return queryInterface.dropTable('Tasks');
   }
 };
