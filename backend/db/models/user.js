@@ -6,6 +6,14 @@ module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
     'User',
     {
+      firstName: {
+        type: DataTypes.STRING(30),
+        allowNull: false,
+      },
+      lastName: {
+        type: DataTypes.STRING(30),
+        allowNull: false,
+      },
       username: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -51,6 +59,10 @@ module.exports = (sequelize, DataTypes) => {
   );
   User.associate = function (models) {
     // associations can be defined here
+    User.hasMany(models.ProjectTeam, { foreignKey: 'userId' })
+    User.hasMany(models.Project, { foreignKey: 'userId' })
+    User.hasMany(models.Comments, { foreignKey: 'userId' })
+
   };
   User.prototype.toSafeObject = function () {
     // remember, this cannot be an arrow function
