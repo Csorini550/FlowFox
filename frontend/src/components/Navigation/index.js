@@ -5,7 +5,7 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 
-function Navigation({ isLoaded }){
+function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks;
@@ -23,7 +23,10 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <ul>
+    <ul id="top-nav-bar">
+      <li>
+        <h2>FoxyFlow logo</h2>
+      </li>
       <li>
         <NavLink exact to="/">Home</NavLink>
         {isLoaded && sessionLinks}
