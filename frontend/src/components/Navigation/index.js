@@ -4,6 +4,10 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
+import Sidebar from '../Sidebar';
+// import Sidebar from '../Sidebar'
+
+
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
@@ -23,9 +27,11 @@ function Navigation({ isLoaded }) {
   }
 
   return (
+
     <ul id="top-nav-bar">
+
       <li>
-        <h2>FoxyFlow logo</h2>
+        <Sidebar />
       </li>
       <li>
         <NavLink exact to="/">Home</NavLink>

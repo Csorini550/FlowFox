@@ -1,31 +1,31 @@
-
-#home-page-container {
-    background-color: purple;
-    height: 350px;
+/* #home-page-container {
+    height: auto;
+    background: purple;
     position: relative;
     overflow: hidden;
-}
+} */
 
 #home-page-container img {
-    width: 100;
+    width: 100%;
+    height: auto;
 }
 
-#home-page-overlay {
-    height: 250px;
+
+/* #home-page-overlay {
+    height: 1000px;
     width: 100%;
-    background: rgba(0,0,0, 0.5);
-    position: absolute;
+    background: rgba(0, 0, 0, 0.7);
+    position: relative;
     top: 0;
     left: 0;
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: flex-end;
+} */
 
-
-}
-
-#home-page-overlay {
-    color: white;
+h3 {
+    color: black;
     font-size: 48px;
-    margin-right: 100px;
+    margin-left: 60px
+    /* align-self: start; */
 }
