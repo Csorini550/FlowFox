@@ -59,8 +59,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   User.associate = function (models) {
     // associations can be defined here
-    User.hasMany(models.ProjectTeam, { foreignKey: 'userId' })
-    User.hasMany(models.Project, { foreignKey: 'userId' })
+    User.belongsToMany(models.Project, { foreignKey: 'userId', otherKey: 'projectId', through: 'ProjectTeam' })
     User.hasMany(models.Comment, { foreignKey: 'userId' })
     User.hasMany(models.Task, { foreignKey: 'projectId' })
 
@@ -94,12 +93,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
 
-  User.signup = async function ({ username, email, password }) {
+  User.signup = async function ({ username, email, password, firstName, lastName }) {
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
       username,
       email,
-      hashedPassword
+      hashedPassword,
+      firstName,
+      lastName
     });
     return await User.scope('currentUser').findByPk(user.id);
   };

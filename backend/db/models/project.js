@@ -8,9 +8,9 @@ module.exports = (sequelize, DataTypes) => {
 
   }, {});
   Project.associate = function (models) {
-    Project.belongsTo(models.CategoryProject, { foreignKey: 'projectId' })
-    Project.belongsToMany(models.User, { foreignKey: 'userId', through: models.ProjectTeam, otherKey: 'projectId' })
-    Project.belongsTo(models.Section, { foreignKey: 'sectionId' })
+    Project.belongsToMany(models.User, { foreignKey: 'projectId', through: 'ProjectTeam', otherKey: 'userId' })
+    Project.belongsToMany(models.Section, { foreignKey: 'projectId', through: "CategoryProjects", otherKey: 'sectionId' })
+
     // associations can be defined here
   };
   return Project;
