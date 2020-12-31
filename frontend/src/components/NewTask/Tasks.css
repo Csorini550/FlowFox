@@ -1,0 +1,28 @@
+
+.main {
+    height: 1000px;
+    padding-bottom: 1000px;
+    background-image: linear-gradient(to bottom right, #c71784, rgb(74, 165, 240));
+}
+
+.input {
+    background-image: linear-gradient(to bottom right, #e49a39, rgba(231, 87, 87));
+}
+
+.form {
+    /* padding-left:70px; */
+    display: flex;
+    justify-content: space-around;
+}
+.tasks {
+    justify-content: center;
+    padding-bottom: 250px;
+}
+
+.annoyed {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+/* .one .two  .three .four {
+    padding-left: 10px;
+} */

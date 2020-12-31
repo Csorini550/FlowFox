@@ -5,6 +5,7 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 import Sidebar from '../Sidebar';
+import foxImage from './images.png'
 // import Sidebar from '../Sidebar'
 
 
@@ -34,7 +35,9 @@ function Navigation({ isLoaded }) {
         <Sidebar />
       </li>
       <li>
-        <NavLink exact to="/">Home</NavLink>
+        <NavLink exact to="/"><img src={foxImage} className='foxImage' /></NavLink>
+      </li>
+      <li>
         {isLoaded && sessionLinks}
       </li>
     </ul>

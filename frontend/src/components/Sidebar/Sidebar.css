@@ -2,8 +2,9 @@
     background-color:rgba(231, 87, 87, 0.2);
     height: 80px;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
+    
 }
 
 .menu-bars {
@@ -13,7 +14,7 @@
 }
 
 .nav-menu {
-    background-color: rgba(231, 87, 87);
+    background-image: linear-gradient(to bottom right, #e49a39, rgba(231, 87, 87));
     width:250px;
     height: 100vh;
     display: flex;
@@ -29,15 +30,15 @@
     transition: 850ms;
 }
 
-.nav-text {
+/* .nav-text {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     padding: 8px, 0px 8px 16px;
     height: 60px;
-}
+} */
 
-.nav-text a {
+/* .nav-text * {
     text-decoration: none;
     color: black;
     font-size: 18px;
@@ -47,7 +48,7 @@
     align-items: center;
     padding: 0 16px;
     border-radius: 4px;
-}
+} */
 
 .nav-text a:hover {
     background-color: rgb(35, 137, 184);
@@ -59,15 +60,22 @@
 
 }
 
-.navbar-toggle {
-    background-color:rgba(231, 87, 87);
-    width: 100%;
-    height: 80px;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-}
 
+.navbar-toggle {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    background: #e49a39;
+    width: 1px;
+    height: 1px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
+.annoyed {
+    padding-top: 15px;
+}
 span {
     margin-left: 16px
 }

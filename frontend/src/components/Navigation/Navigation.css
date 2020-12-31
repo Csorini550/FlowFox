@@ -3,18 +3,19 @@
 }
 
 #top-nav-bar {
-  background: rgba(231, 87, 87, 0.3);
+ background-image: linear-gradient(to bottom right, #e49a39, rgba(231, 87, 87));
   margin: 0;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   list-style-type: none;
+  
 }
 
 #profile-button {
   margin-right: 20px;
-  margin-left: 20px;
+  /* position: fixed; */
 }
 
 #profile-list {
@@ -22,12 +23,20 @@
   list-style-type: none;
   
 }
-
 #home-profile-button {
   width: 50px;
-  justify-content: space-between;
+  /* padding-left:80px; */
+  /* justify-content: space-between; */
 }
 
 #overflow {
   overflow: auto;
+}
+.foxImage {
+  margin-top: 8px;
+  margin-left: 1200px;
+  /* position: fixed; */
+  height: 28px;
+  width: 28px;
+  border-radius: 14px;
 }

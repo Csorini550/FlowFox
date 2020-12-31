@@ -1,0 +1,27 @@
+user - userId, username, firstName, lastName, password (has many projects)
+hasMany projects
+
+projectTeam - userId, projectId
+belongsTo users
+belongsto project
+
+project - projectId, name (many categories, many sections, many users)
+    project.hasMany(models.Category, { foreignKey: 'categoryId' })
+    project.hasMany(models.Section, { foreignKey: 'sectionId' })
+    project.hasMany(models.User, { foreignKey: 'UserId' })
+
+section - sectionId, name, projectId (many tasks)
+    section.hasMany(models.Task, {foreignKey:'taskId'})
+
+task - taskId, name, dueDate, projectId, sectionId, priority (one to one)
+    task.belongsTo(models.Project, { foreignKey: 'projectId' })
+    task.belongsTo(models.Section, { foreignKey: 'sectionId' })
+
+categoryProject(join table) - categoryProjectId, projectId, categoryId
+    categoryProject.belongsTo(models.Project, {foreignKey: 'projectId'})
+    categoryProject.belongsTo(models.Category, { foreignKey: 'categoryId' })
+
+category - categoryId, name (many projects)
+    ****category.belongsTo(models.Project, { foreignKey: 'projectId', through: 'CategoryProject', otherKey: 'categoryId'  })
+
+    https://lucid.app/lucidchart/ae95d91a-67eb-46aa-acf7-7113dfec77cb/edit?beaconFlowId=00DAA3FE98D7C324&page=0_0#
