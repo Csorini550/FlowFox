@@ -5,6 +5,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING
     },
+    // ownerId: {
+    //   allowNull: false,
+    //   type: DataTypes.INTEGER
+    // },
 
   }, {});
   Project.associate = function (models) {

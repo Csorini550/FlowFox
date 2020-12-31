@@ -6,11 +6,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(30)
     },
     projectId: {
-      allowNull: false,
+      // allowNull: false,
       type: DataTypes.INTEGER
     },
     sectionId: {
-      allowNull: false,
+      // allowNull: false,
       type: DataTypes.INTEGER
     },
     priority: {
