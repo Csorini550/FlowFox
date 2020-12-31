@@ -4,12 +4,14 @@ const { Task } = require('../../db/models');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const router = express.Router();
 
-router.get('/:id', asyncHandler(async function (req, res) {
-    const userId = req.params.id;
+router.get('/:projectId/:userId', asyncHandler(async function (req, res) {
+    const { projectId, userId } = req.params;
     const tasks = await Task.findAll(
         {
             where: {
-                userId,
+                projectId,
+                // userId,
+
 
             },
         }
@@ -20,14 +22,16 @@ router.get('/:id', asyncHandler(async function (req, res) {
 router.post(
     '/',
     asyncHandler(async function (req, res) {
-        const { name, completed, dueDate, priority } = req.body;
-        const projectId = req.body.id;
+        const { name, completed, dueDate, priority, sectionId, projectId, userId } = req.body;
+
         const tasks = await Task.create({
             name,
             completed,
             priority,
             dueDate,
             projectId,
+            sectionId: 1,
+            userId
             // userId,
             // userId: req.session.auth.userId
         });

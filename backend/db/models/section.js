@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Section.associate = function (models) {
     // associations can be defined here
-    Section.hasMany(models.Task, { foreignKey: 'taskId' })
+    Section.hasMany(models.Task, { foreignKey: 'sectionId' })
     Section.belongsTo(models.Project, { foreignKey: 'projectId' })
 
   };

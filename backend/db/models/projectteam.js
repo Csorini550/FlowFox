@@ -4,6 +4,10 @@ module.exports = (sequelize, DataTypes) => {
     projectId: {
       type: DataTypes.INTEGER
     },
+    name: {
+      allowNull: false,
+      type: DataTypes.STRING
+    },
     userId: {
       allowNull: false,
       type: DataTypes.INTEGER

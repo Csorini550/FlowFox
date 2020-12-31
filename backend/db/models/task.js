@@ -6,11 +6,15 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(30)
     },
     projectId: {
-      // allowNull: false,
+      allowNull: false,
+      type: DataTypes.INTEGER
+    },
+    userId: {
+      allowNull: false,
       type: DataTypes.INTEGER
     },
     sectionId: {
-      // allowNull: false,
+      allowNull: false,
       type: DataTypes.INTEGER
     },
     priority: {
@@ -28,6 +32,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Task.associate = function (models) {
     // associations can be defined here
+    Task.belongsTo(models.Project, { foreignKey: 'projectId' })
     Task.hasMany(models.Comment, { foreignKey: 'taskId' })
     Task.belongsTo(models.Section, { foreignKey: 'sectionId' })
     Task.belongsTo(models.User, { foreignKey: 'userId' })
