@@ -1,33 +1,40 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { ProjectTeam } = require('../../db/models');
-
 const router = express.Router();
 
-router.get('/:id', asyncHandler(async function (req, res) {
-    const userId = req.params.id;
-    const projectTeam = await ProjectTeam.findAll(
+router.get('/', asyncHandler(async function (req, res) {
+    // const userId = req.params.id;
+    if (!req.user) {
+        res.json([])
+        return
+    }
+    const userId = req.user.id;
+    const projectTeams = await ProjectTeam.findAll(
         {
             where: {
                 userId,
 
             },
-            include: [ProjectTeam]
+            // include: [ProjectTeam]
         }
     );
-    res.json(projectTeam);
+    res.json(projectTeams);
+
 }));
 
 router.post(
     '/',
     asyncHandler(async function (req, res) {
-        const { name, userId } = req.body;
+        const { name, userId, projectId } = req.body;
+
 
         const projectTeam = await ProjectTeam.create({
-
-            // userId,
-            // userId: req.session.auth.userId
+            name,
+            userId,
+            projectId
         });
+
         res.json(projectTeam);
     })
 );

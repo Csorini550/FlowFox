@@ -11,13 +11,13 @@ html,body {
     font-family: Helvetica;
 }
 
-.home, .tasks, .inbox {
+/* .home, .tasks, .inbox {
     display: flex;
     height: 90vh;
     align-items: center;
     justify-content: center;
     font-size: 3rem;
-}
+} */
 
 #main {
     transition: 850ms;

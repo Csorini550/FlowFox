@@ -15,7 +15,7 @@ const getProjectsAction = (projects) => ({
 
 export const getProjects = (userId) => {
     return async (dispatch) => {
-        const res = await fetch(`http://localhost:5000/api/projects/user/${userId}`)
+        const res = await fetch(`/api/projects/user/${userId}`)
         dispatch(getProjectsAction(res.data));
         return res.data;
     }
@@ -23,7 +23,7 @@ export const getProjects = (userId) => {
 
 export const postProject = (body) => {
     return async (dispatch) => {
-        const res = await fetch('http://localhost:5000/api/projects', {
+        const res = await fetch('/api/projects', {
             method: 'POST',
             body: JSON.stringify(
                 body

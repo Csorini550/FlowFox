@@ -37,6 +37,7 @@ router.get('/user/:id', asyncHandler(async function (req, res) {
 
 router.post(
     '/',
+    requireAuth,
     asyncHandler(async function (req, res) {
         const { name, userId } = req.body;
 

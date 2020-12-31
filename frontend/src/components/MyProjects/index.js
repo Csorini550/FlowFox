@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 // import { fetch } from '../../store/csrf'
 import { getProjects } from '../../store/projects'
-import './MyProjects.css'
+import './MyProjects.css';
 
 const MyProjects = () => {
     const dispatch = useDispatch();

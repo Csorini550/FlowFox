@@ -4,29 +4,42 @@ import { useParams } from 'react-router-dom'
 import { fetch } from '../../store/csrf'
 import { postTask } from '../../store/tasks.js'
 import { getTasks } from '../../store/tasks.js'
+// import { getProjects } from '../../store/projects'
 import './Tasks.css'
-const NewTask = () => {
 
+
+const NewTask = () => {
+    const [projectName, setprojectName] = useState([]);
     const [name, setName] = useState("");
-    const [priority, setPriority] = useState("");
+    const [priority, setPriority] = useState('High');
     const [dueDate, setDueDate] = useState(new Date());
     const [completed, setCompleted] = useState(false)
-    const [tasks, setTasks] = useState([])
+    // const [tasks, setTasks] = useState([])
     const dispatch = useDispatch();
     // const userId = useSelector((state) => state.session.user.id)
     let { projectId } = useParams();
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(postTask({ name, priority, dueDate, completed, projectId })) //pass it in here
+        dispatch(postTask({ name, priority, dueDate, completed, projectId, userId: loggedInUser.id })) //pass it in here
 
     };
+
+    // useEffect(async () => {
+    //     const projects = await dispatch(getProjects(loggedInUser.id));
+    //     setprojectName(projects)
+    // }, [])
+
     const loggedInUser = useSelector(state => {
         return state.session.user;
     })
 
+    const tasks = useSelector(state => {
+        return state.tasks
+    })
+
     useEffect(async () => {
-        const storeTasks = await dispatch(getTasks(loggedInUser.id))
-        setTasks(storeTasks);
+        const storeTasks = await dispatch(getTasks(projectId, loggedInUser.id))
+        // setTasks(storeTasks);
     }, [])
 
     // const userTasks = () => {
@@ -86,20 +99,23 @@ const NewTask = () => {
                 <button className='input four' type='submit' value='Submit'>Submit</button>
             </form>
             <div className='tasks'>
-                <h4>My tasks should show here</h4>
+                <h4>Current tasks</h4>
                 {!tasks && <h3>Loading...</h3>}
-                {tasks && tasks.map((task, index) => {
-                    return (
-                        <ul key={index}>
-                            <li> {task.Task.name}</li>
-                            <li> {task.Task.completed}</li>
-                            <li> {task.Task.priority}</li>
-                            <li> {task.Task.dueDate}</li>
-                        </ul>
 
+                {tasks && Object.values(tasks).map((task, index) => {
+                    console.log(task)
+                    return (
+                        <div key={task.id}>
+                            <div> {task.name}</div>
+                            <div> {task.completed}</div>
+                            <div> {task.priority}</div>
+                            <div> {task.dueDate}</div>
+                            <br />
+                        </div>
                     )
 
                 })}
+
             </div>
 
         </div>

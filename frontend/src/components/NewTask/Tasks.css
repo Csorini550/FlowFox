@@ -1,7 +1,7 @@
 
 .main {
-    height: 1000px;
-    padding-bottom: 1000px;
+    display: flex;
+    flex-flow: column;
     background-image: linear-gradient(to bottom right, #c71784, rgb(74, 165, 240));
 }
 
@@ -15,8 +15,9 @@
     justify-content: space-around;
 }
 .tasks {
-    justify-content: center;
-    padding-bottom: 250px;
+    /* justify-content: center; */
+    display: flex;
+    flex-flow:column;
 }
 
 .annoyed {

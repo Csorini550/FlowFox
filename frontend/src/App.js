@@ -6,7 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/Home"
-
+import ProjectTeam from "./components/ProjectTeam"
 import NewProject from "./components/NewProject";
 import NewTask from "./components/NewTask";
 import MyProjects from "./components/MyProjects";
@@ -25,7 +25,10 @@ function App() {
         {
           isLoaded && (
             <Switch>
-              <Route path='/projects/:id/tasks'>
+              <Route path='/projectTeams/:userId'>
+                <ProjectTeam />
+              </Route>
+              <Route path='/projects/:projectId/tasks'>
                 <NewTask />
               </Route>
               <Route path="/project/new">

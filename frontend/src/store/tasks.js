@@ -28,9 +28,9 @@ const getTasksAction = (tasks) => ({
 })
 
 
-export const getTasks = (taskId) => {
+export const getTasks = (projectId, userId) => {
     return async (dispatch) => {
-        const res = await fetch(`http://localhost:5000/api/tasks/${taskId}`)
+        const res = await fetch(`/api/tasks/${projectId}/${userId}`)
         dispatch(getTasksAction(res.data));
         return res.data;
     }
@@ -58,7 +58,7 @@ export const deleteTask = (task) => async (dispatch) => {
 
 export const postTask = (body) => {
     return async (dispatch) => {
-        const res = await fetch('http://localhost:5000/api/tasks', {
+        const res = await fetch('/api/tasks', {
             method: 'POST',
             body: JSON.stringify(
                 body
@@ -80,7 +80,11 @@ function reducer(state = initialState, action) {
             newState = Object.assign({}, state, { task: null });
             return newState;
         case GET_TASKS:
-            return action.payload
+            const newObject = {};
+            action.payload.forEach(function (task) {
+                newObject[task.id] = task;
+            })
+            return newObject;
         default:
             return state;
     }
