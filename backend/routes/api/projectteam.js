@@ -28,14 +28,15 @@ router.get('/:id', asyncHandler(async function (req, res) {
 router.post(
     '/',
     asyncHandler(async function (req, res) {
-        const { name, userId, projectId } = req.body;
+        const { name, userId, projectId, ownerId } = req.body;
         const projectTeam = await ProjectTeam.create({
             name,
             userId,
             projectId
         });
+        const projectTeam2 = await ProjectTeam.create({ userId: ownerId, name, projectId })
 
-        res.json(projectTeam);
+        res.json(projectTeam, projectTeam2);
     })
 );
 

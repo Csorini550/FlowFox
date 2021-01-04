@@ -19,6 +19,21 @@ router.get('/:projectId/:userId', asyncHandler(async function (req, res) {
     res.json(tasks);
 }));
 
+router.delete(
+    '/:id',
+    async (req, res) => {
+        // const id = req.params.id;
+        async function deleteItem(taskId) {
+            const task = await Task.findByPk(taskId);
+            await Task.destroy({ where: { id: task.id } });
+            return task
+        }
+
+        const taskId = await Task.deleteItem(req.params.id);
+        return res.json({ taskId });
+    }
+);
+
 router.post(
     '/',
     asyncHandler(async function (req, res) {
