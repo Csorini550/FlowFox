@@ -41,4 +41,35 @@ router.post(
   })
 );
 
+
+
+router.get('/all', asyncHandler(async function (req, res) {
+  // const userId = req.params.id;
+  // if (!req.user) {
+  //   res.json([])
+  //   return
+  // }
+  // const userId = req.user.id;
+  const users = await User.findAll();
+  res.json(users);
+
+}));
+
+// router.post(
+//   '/',
+//   asyncHandler(async function (req, res) {
+//     const { name, userId, projectId } = req.body;
+
+
+//     const projectTeam = await ProjectTeam.create({
+//       name,
+//       userId,
+//       projectId
+//     });
+
+//     res.json(projectTeam);
+//   })
+// );
+
+
 module.exports = router;
