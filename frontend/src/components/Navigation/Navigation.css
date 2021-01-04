@@ -15,6 +15,8 @@
 
 #profile-button {
   margin-right: 20px;
+  display: flex;
+  justify-self: end;
   /* position: fixed; */
 }
 

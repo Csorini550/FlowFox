@@ -4,12 +4,14 @@ import session from './session'
 import projects from './projects'
 import tasks from './tasks'
 import projectTeams from './projectTeam'
+import users from './users'
 
 const rootReducer = combineReducers({
   session,
   projects,
   tasks,
-  projectTeams
+  projectTeams,
+  users,
 });
 
 let enhancer;

@@ -1,5 +1,5 @@
 import { fetch } from './csrf.js';
-const initialState = {};
+const initialState = [];
 
 const CREATE_TASK = 'tasks/createTask';
 
@@ -12,7 +12,7 @@ const createTask = (task) => ({
     type: CREATE_TASK,
     payload: task
 });
-const removeTask = (task) => ({
+const removeTaskAction = (task) => ({
     type: REMOVE_TASK,
     payload: task
 })
@@ -28,6 +28,8 @@ const getTasksAction = (tasks) => ({
 })
 
 
+
+
 export const getTasks = (projectId, userId) => {
     return async (dispatch) => {
         const res = await fetch(`/api/tasks/${projectId}/${userId}`)
@@ -36,24 +38,12 @@ export const getTasks = (projectId, userId) => {
     }
 };
 
-// export const completedTask = (body) => {
-//     return async (dispatch) => {
-//         const res = await fetch('/api/tasks', {
-//             method: 'PATCH',
-//             body: JSON.stringify(
-//                 body
-//             )
-//         })
-//         dispatch(completedTask(res.data))
-
-//     };
-// }
-export const deleteTask = (task) => async (dispatch) => {
-    const res = await fetch('/api/tasks', {
+export const removeTask = (taskId) => async (dispatch) => {
+    const res = await fetch(`/api/tasks/${taskId}`, {
         method: 'DELETE',
     });
-    dispatch(removeTask());
-    return res;
+    dispatch(removeTaskAction());
+    return res.data;
 };
 
 export const postTask = (body) => {
@@ -70,15 +60,19 @@ export const postTask = (body) => {
 }
 
 function reducer(state = initialState, action) {
-    let newState;
+    let tasks = [];
+    let task = {};
+
+
     switch (action.type) {
         case CREATE_TASK:
             return { ...state, [action.payload.id]: action.payload }
         // case COMPLETED_TASK:
         //     return {...state,}
         case REMOVE_TASK:
-            newState = Object.assign({}, state, { task: null });
-            return newState;
+            return {
+                ...state, tasks: action.payload.filter(task => action.payload.id !== task.id)
+            }
         case GET_TASKS:
             const newObject = {};
             action.payload.forEach(function (task) {

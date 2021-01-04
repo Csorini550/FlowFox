@@ -1,5 +1,5 @@
 import { fetch } from './csrf.js';
-const initialState = [];
+const initialState = []
 
 const GET_PROJECTTEAM = 'projectTeam/getProjectTeam';
 const CREATE_PROJECTTEAM = 'projectTeam/createProjectTeam';
@@ -19,22 +19,23 @@ const getProjectTeamAction = (projectTeams) => ({
     payload: projectTeams
 });
 
-export const getProjectTeam = () => {
+export const getProjectTeam = (userId) => {
     return async (dispatch) => {
-        const res = await fetch(`/api/projectTeams`)
+        const res = await fetch(`/api/projectTeams/${userId}`)
         dispatch(getProjectTeamAction(res.data));
         return res.data;
     }
 };
 
 
-export const postProjectTeam = (projectId, name, userId) => {
-    const body = { name, userId, projectId }
+export const postProjectTeam = (projectId, name, userId, ownerId) => {
+    console.log("psot project team!!!", projectId, name, userId)
+    const body = { name, userId, projectId, ownerId }
     return async (dispatch) => {
-        const res = await fetch(`/api/projectTeams/${userId}`, {
+        const res = await fetch(`/api/projectTeams`, {
             method: 'POST',
             body: JSON.stringify(
-                // body
+                body
             )
         })
         dispatch(createProjectTeamAction(res.data))
@@ -59,10 +60,15 @@ function reducer(state = initialState, action) {
         case CREATE_PROJECTTEAM:
             return { ...state, [action.payload.id]: action.payload };
         case GET_PROJECTTEAM:
-            return action.payload;
+            return [...action.payload];
+        // const newObject = {};
+        // action.payload.forEach(function (projectTeam) {
+        //     newObject[projectTeam.id] = projectTeam;
+        // })
         case DELETE_PROJECTTEAM:
-            newState = Object.assign({}, state, { user: null });
-            return newState;
+            return {
+                ...state, tasks: state.tasks.filter(task => task !== action.payload)
+            }
         default:
             return state;
     }

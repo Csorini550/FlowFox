@@ -2,17 +2,29 @@
 .main {
     display: flex;
     flex-flow: column;
+    /* height:100%; */
     background-image: linear-gradient(to bottom right, #c71784, rgb(74, 165, 240));
+    height: max;
+}
+.main-two {
+    background-image: linear-gradient(to top left, #c71784, rgb(74, 165, 240));
+    display: flex;
+    flex-flow: column;
 }
 
 .input {
     background-image: linear-gradient(to bottom right, #e49a39, rgba(231, 87, 87));
+    height: 20px;
 }
-
+.submit {
+    margin-top: 14px;
+}
 .form {
     /* padding-left:70px; */
     display: flex;
     justify-content: space-around;
+    padding-bottom: 30px;
+    height:100%;
 }
 .tasks {
     /* justify-content: center; */
@@ -24,6 +36,18 @@
     padding-right: 5px;
     padding-left: 5px;
 }
-/* .one .two  .three .four {
-    padding-left: 10px;
-} */
+.all-tasks {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+}
+table, th, td {
+  border: 1px solid black;
+}
+
+.table {
+   position: relative; 
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}

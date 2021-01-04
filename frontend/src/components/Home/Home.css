@@ -12,7 +12,11 @@
 
 } */
 
-#home-page-container::after {
+#home-page-container {
+     background-image: linear-gradient(to bottom right, #6c50e7, rgb(74, 165, 240));
+}
+
+/* #home-page-container::after {
   content: "";
   background-image: url("./cute-fox-cartoon_160606-227.jpg");
   opacity: 0.5;
@@ -22,7 +26,7 @@
   right: 0;
   position: absolute;
   z-index: -1;   
-}
+} */
 /* .project {
     min-height: 10em;
     width:100%;
@@ -49,7 +53,10 @@
     background-color:rgba(231, 87, 87, 0.3);
     color: black;
 }
-
+ 
+.main {
+    background-image: linear-gradient(to bottom right, #c71784, rgb(74, 165, 240));
+}
 /* #home-page-overlay {
     height: 1000px;
     width: 100%;
@@ -65,4 +72,5 @@
 h3 {
     color: black;
     font-size: 48px;
+    
 }

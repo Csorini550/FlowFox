@@ -1,4 +1,4 @@
-import "./Home.css";
+// import "./Home.css";
 
 import { Link } from 'react-router-dom';
 import * as AiIcons from "react-icons/ai"
@@ -45,20 +45,19 @@ const Home = () => {
     // }, [])
 
     return (
-        <div>
-            {loggedInUser && <h3> Welcome {loggedInUser.username} start building that foxy flow</h3>}
+        <div className='main-home'>
+            <div className='text'>
+                {loggedInUser && <h3 className='home-title'> Welcome {loggedInUser.username} start building that foxy flow</h3>}
+            </div>
             <div id="home-page-container">
-                <div className='project'>
-                    <div>
-                        <div className='create-project'>
-                            <Link to='/project/new' className='new-project'>
 
-                                <AiIcons.AiOutlinePlusSquare className='new-project-button' />
-                            </Link>
-                        </div>
-                        <h4>New Project</h4>
+                <div className='new-project'>
+                    <Link to='/project/new' className='project-link'>
 
-                    </div>
+                        <AiIcons.AiOutlinePlusSquare className='create-project' />
+                        <h3>New Project</h3>
+                    </Link>
+
                 </div>
             </div>
         </div>

@@ -16,7 +16,9 @@ const getProjectsAction = (projects) => ({
 export const getProjects = (userId) => {
     return async (dispatch) => {
         const res = await fetch(`/api/projects/user/${userId}`)
+
         dispatch(getProjectsAction(res.data));
+
         return res.data;
     }
 };
