@@ -40,41 +40,41 @@ module.exports = {
   }
 };
 
-module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Sections', [
-      {
-        name: 'Project',
-        projectId: '1',
-      }
+// module.exports = {
+//   up: async (queryInterface, Sequelize) => {
+//     return queryInterface.bulkInsert('Sections', [
+//       {
+//         name: 'Project',
+//         projectId: '1',
+//       }
 
-    ], {});
-  },
-
-
-  down: async (queryInterface, Sequelize) => {
-    const Op = Sequelize.Op;
-    return queryInterface.bulkDelete('Sections', {
-
-    }, {});
-  }
-}
-
-module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Projects', [
-      {
-        name: 'Project',
-      }
-
-    ], {});
-  },
+//     ], {});
+//   },
 
 
-  down: async (queryInterface, Sequelize) => {
-    const Op = Sequelize.Op;
-    return queryInterface.bulkDelete('Projects', {
+//   down: async (queryInterface, Sequelize) => {
+//     const Op = Sequelize.Op;
+//     return queryInterface.bulkDelete('Sections', {
 
-    }, {});
-  }
-}
+//     }, {});
+//   }
+// }
+
+// module.exports = {
+//   up: async (queryInterface, Sequelize) => {
+//     return queryInterface.bulkInsert('Projects', [
+//       {
+//         name: 'Project',
+//       }
+
+//     ], {});
+//   },
+
+
+//   down: async (queryInterface, Sequelize) => {
+//     const Op = Sequelize.Op;
+//     return queryInterface.bulkDelete('Projects', {
+
+//     }, {});
+//   }
+// }
